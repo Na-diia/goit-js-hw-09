@@ -16,3 +16,12 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.value {
+  color: #000000;
+  
+}
+
+.label {
+  color: #000000;
+}

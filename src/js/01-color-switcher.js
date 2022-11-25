@@ -6,7 +6,6 @@ const refs = {
   body: document.querySelector('body'),
   btnStart: document.querySelector('button[data-start]'),
   btnStop: document.querySelector('button[data-stop]'),
-  color: document.querySelector('.color'),
 };
    
 let timerId = null;
@@ -14,17 +13,18 @@ let timerId = null;
 const changeColor = () => {
   refs.body.style.backgroundColor = getRandomHexColor();
   refs.body.style.color = getRandomHexColor();
-  refs.color.textContent = getRandomHexColor();
 };
 
 function onBtnStartClick() {
   timerId = setInterval(changeColor, 1000);
-  refs.btnStart.disabled = false;
+  refs.btnStart.disabled = true;
+  refs.btnStop.disabled = false;
 };
 
 const onBtnStopClick = () => {
   clearInterval(timerId);
-  refs.btnStart.disabled = true;
+  refs.btnStart.disabled = false;
+  refs.btnStop.disabled = true;
 };
 
 refs.btnStart.addEventListener('click', onBtnStartClick);
