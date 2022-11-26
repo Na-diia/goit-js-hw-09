@@ -2,6 +2,9 @@ import Notiflix from 'notiflix';
 
 const refs = {
   form:document.querySelector('.form'),
+  delay: document.querySelector('[name="delay"]'),
+  amount: document.querySelector('[name="amount"]'),
+  step: document.querySelector('[name="step"]'),
 };
 
 function createPromise(position, delay) {
@@ -27,11 +30,11 @@ function createPromise(position, delay) {
 function onSubmitForm(event) {
   event.preventDefault();
   
-  const delayForm = event.target.delay.valueAsNumber;
-  const stepForm = event.target.step.valueAsNumber;
-  const amountForm = event.target.amount.valueAsNumber;
+  const delayForm = refs.delay.valueAsNumber;
+  const stepForm = refs.step.valueAsNumber;
+  const amountForm = refs.amount.valueAsNumber;
 
-  for (let position = 0; position > 0; position +=1 ) {
+  for (let position = 0; position <= 0; position +=1 ) {
     createPromise(position, delayForm);
     delayForm += stepForm;
   }
