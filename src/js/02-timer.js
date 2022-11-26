@@ -1,10 +1,9 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-
 import Notiflix from 'notiflix';
 
 const refs = {
-  btnStart: document.querySelector('button'),
+  btnStart: document.querySelector('button[data-start]'),
   addDate: document.querySelector('#datetime-picker'),
   days: document.querySelector('span[data-days]'),
   hours: document.querySelector('span[data-hours]'),
@@ -25,7 +24,6 @@ const options = {
 
       if(selectedDates[0] < new Date()) {
         Notiflix.Notify.failure('Please choose a date in the future');
-        refs.start.disabled = true;
         return;
       } else if(selectedDates[0] > new Date()) {
        refs.btnStart.disabled = false;
@@ -47,8 +45,6 @@ const options = {
     },
 };
 
-flatpickr('#datetime-picker', options);
-
 function updateClockFace( {days, hours, minutes, seconds} ) {
     refs.days.textContent = `${days}`;
     refs.hours.textContent = `${hours}`;
@@ -59,10 +55,6 @@ function updateClockFace( {days, hours, minutes, seconds} ) {
 function addLeadingZero(value) {
    return String(value).padStart(2, '0');
 };
-
-// function padStringDays(value) {
-//     return String(value).padStart(3, '0');
-// };
 
 function convertMs(ms) {
     const second = 1000;
@@ -77,3 +69,5 @@ function convertMs(ms) {
   
     return { days, hours, minutes, seconds };
 };
+
+flatpickr('#datetime-picker', options);
