@@ -30,6 +30,8 @@ function onSubmitForm(event) {
   const stepForm = refs.step.valueAsNumber;
   const amountForm = refs.amount.valueAsNumber;
 
+  refs.form.reset();
+
   for (let position = 1; position <= amountForm; position +=1 ) {
     createPromise(position, delayForm)
     .then(({ position, delay }) => {

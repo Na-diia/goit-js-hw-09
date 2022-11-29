@@ -31,12 +31,12 @@ const options = {
 
       refs.btnStart.addEventListener('click', () => {
         intervalId = setInterval(() => {
-        const timeLeft = selectedDates[0] - new Date();
+        const timeLeft = selectedDates[0] - new Date(); 
 
         if(timeLeft < 1000) {
             clearInterval(intervalId);
         };
-
+        
         const resultTime = convertMs(timeLeft);
         updateClockFace(resultTime);
         }, 1000);
